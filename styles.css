@@ -202,6 +202,10 @@
   #cartShopping {
     cursor: pointer;
   }
+
+  #btnAddToCart {
+    cursor: pointer;
+  }
   /*ShoppingCart Aside*/
   .product-detail-close {
     background: var(--white);

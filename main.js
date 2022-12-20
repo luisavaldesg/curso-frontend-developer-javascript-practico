@@ -7,6 +7,9 @@ const shoppingCartContainer = document.querySelector("#shoppingCartContainer");
 const cardsContainer = document.querySelector(".cards-container");
 const productDetailContainer = document.querySelector("#productDetail");
 const btnCloseProductDetail = document.querySelector(".product-detail-close");
+const btnAddToCartContainer = document.querySelector("#countShoppingCart");
+let cartCountShopp =0;
+btnAddToCartContainer.innerText = cartCountShopp;
 
 email.addEventListener("click", toggleMenuDesktop);
 burgerMenu.addEventListener("click", toggleMenuMobile);
@@ -41,7 +44,7 @@ function toggleOrderAside() {
   //When I click on the the menu order then menu mobile is hidden
   const isMobileMenuClosed = mobileOptions.classList.contains("inactive");
   if (!isMobileMenuClosed) {
-    mobileOptions.classList.add("inactive");
+    mobileOptions.classList.add("inactive");ñ
 
   }
   shoppingCartContainer.classList.toggle("inactive");
@@ -64,6 +67,13 @@ function openProductDetailAside(){
   //If shopping cart is open and I click on the product detail then shopping cart must be closed.
   shoppingCartContainer.classList.add("inactive");	
   productDetailContainer.classList.remove("inactive");
+}
+
+function incrementShoppingCart(){
+  cartCountShopp+=1; 
+  btnAddToCartContainer.innerText = cartCountShopp;
+  //console.log("Incrementing shopping cart" + cartCountShopp);
+  //console.log(cartCount);
 }
 
 /**shopping cart */
@@ -126,6 +136,7 @@ renderProducts(productList);
 
 
 function renderProducts(arr) {
+  let cartCount = 0;
   console.log(cardsContainer);
   for (product of arr) {
     const productCard = document.createElement("div");
@@ -158,6 +169,8 @@ function renderProducts(arr) {
     const productInfoFigure = document.createElement("figure");
     const productImgCart = document.createElement("img");
     productImgCart.setAttribute("src", "./icons/bt_add_to_cart.svg");
+    productImgCart.setAttribute("id", "btnAddToCart");
+    productImgCart.addEventListener("click", incrementShoppingCart);
 
     productInfoFigure.appendChild(productImgCart);
 
